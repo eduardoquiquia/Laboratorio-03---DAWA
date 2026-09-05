@@ -1,0 +1,22 @@
+[
+  { "producto": "Laptop Pro 15", "cantidad": 12, "precio": 1200.50 },
+  { "producto": "Mouse Inalámbrico", "cantidad": 45, "precio": 25.00 },
+  { "producto": "Teclado Mecánico", "cantidad": 30, "precio": 85.90 },
+  { "producto": "Monitor 27 Pulgadas", "cantidad": 15, "precio": 320.00 },
+  { "producto": "Audífonos Bluetooth", "cantidad": 50, "precio": 45.50 },
+  { "producto": "Webcam HD", "cantidad": 20, "precio": 60.00 },
+  { "producto": "Silla Gamer Ergónoma", "cantidad": 8, "precio": 210.00 },
+  { "producto": "Escritorio Elevable", "cantidad": 5, "precio": 450.00 },
+  { "producto": "Disco SSD 1TB", "cantidad": 40, "precio": 95.00 },
+  { "producto": "Memoria RAM 16GB", "cantidad": 60, "precio": 70.00 },
+  { "producto": "Microfono USB", "cantidad": 18, "precio": 80.00 },
+  { "producto": "Hub USB-C", "cantidad": 35, "precio": 30.00 },
+  { "producto": "Pad Mouse XXL", "cantidad": 100, "precio": 15.00 },
+  { "producto": "Soporte Laptop", "cantidad": 25, "precio": 22.00 },
+  { "producto": "Cable HDMI 2.1", "cantidad": 80, "precio": 12.00 },
+  { "producto": "Luz LED Escritorio", "cantidad": 14, "precio": 35.00 },
+  { "producto": "Cargador Carga Rápida", "cantidad": 40, "precio": 28.00 },
+  { "producto": "Base Enfriadora", "cantidad": 10, "precio": 40.00 },
+  { "producto": "Mochila Laptop", "cantidad": 22, "precio": 55.00 },
+  { "producto": "Adaptador Ethernet", "cantidad": 30, "precio": 18.00 }
+]

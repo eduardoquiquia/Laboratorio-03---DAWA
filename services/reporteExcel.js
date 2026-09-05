@@ -1,31 +1,41 @@
 const fs = require('fs');
 const path = require('path');
+const readline = require('readline');
 const ExcelJS = require('exceljs');
 
 async function generarReporteVentas(res) {
     const filePath = path.join(__dirname, '..', 'datos.txt');
 
-    // 1. Leer el archivo datos.txt
-    const contenido = await fs.promises.readFile(filePath, 'utf8');
-    const ventas = JSON.parse(contenido);
+    const fileStream = fs.createReadStream(filePath, { encoding: 'utf8' });
 
-    // 2. Crear Excel y la hoja "Ventas"
+    const rl = readline.createInterface({
+        input: fileStream,
+        crlfDelay: Infinity
+    });
+
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Ventas');
 
-    // 3. Configurar cabeceras de columnas
     worksheet.columns = [
         { header: 'Producto', key: 'producto', width: 25 },
         { header: 'Cantidad', key: 'cantidad', width: 12 },
         { header: 'Precio', key: 'precio', width: 12 }
     ];
 
-    // 4. Agregar cada objeto traído desde datos.txt
-    ventas.forEach(item => {
-        worksheet.addRow(item);
-    });
+    for await (const line of rl) {
+        const lineaLimpia = line.trim();
+        
+        if (!lineaLimpia || lineaLimpia === '[' || lineaLimpia === ']') continue;
 
-    // 5. Configurar respuesta HTTP y transmitir
+        const jsonString = lineaLimpia.endsWith(',') ? lineaLimpia.slice(0, -1) : lineaLimpia;
+
+        try {
+            const item = JSON.parse(jsonString);
+            worksheet.addRow(item);
+        } catch (err) {
+            console.error('Error al parsear la línea:', jsonString, err);}
+    }
+
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     res.setHeader('Content-Disposition', 'attachment; filename="reporte_ventas.xlsx"');
 

@@ -2,10 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const ExcelJS = require('exceljs');
 
-/**
- * Lee el archivo datos.txt y genera el Excel hacia la respuesta HTTP
- * @param {import('http').ServerResponse} res
- */
 async function generarReporteVentas(res) {
     const filePath = path.join(__dirname, '..', 'datos.txt');
 
